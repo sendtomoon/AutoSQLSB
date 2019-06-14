@@ -6,40 +6,35 @@ function flushRows(){
 	$("#dataTable tbody  tr:even").css("background-color","#E2EFDA");    
 	$("#dataTable tbody  tr:odd").addClass("odd");
 	$("#dataTable tbody  tr:even").addClass("even");
-	$("#dataTable tbody  tr:odd").find("input").css("background-color", "#C6E0B4");   
-	$("#dataTable tbody  tr:even").find("input").css("background-color","#E2EFDA");   
+	$("#dataTable tbody  tr:odd").find("input").css({"background-color":"#C6E0B4","outline":"none","border": "0"});   
+	$("#dataTable tbody  tr:even").find("input").css({"background-color":"#E2EFDA","outline":"none","border": "0"});   
 	$("#dataTable tbody  tr:odd").find("input").addClass("odd");
 	$("#dataTable tbody  tr:even").find("input").addClass("even");
 }
-function rowValue(filed,type,comment){
+function rowValue(filed,type,comment,defval){
 	var len = $('#dataTable tbody tr').length;
 	var html = '<tr height="40px" ><td align="center" >'+(len+1)+
 	'</td><td><input height="40px" value="'+filed+'" /></td><td><input height="40px" value="'+type+'" />'+
 	'</td><td width="250px"><input height="40px" value="'+comment+'" width="250px"/></td>'+
-	'<td><input height="40px" value="" width="50px"/>'+
+	'<td><input height="40px" value="'+defval+'" width="50px"/>'+
 	'<td><input type="checkbox"  checked="checked"/></td>'+
 	'<td><button onclick="delRow(this)" >删除</button></td></tr>';
 	$("#dataTable").append(html);
 	flushRows();
 }
 function addTracer(){
-	rowValue("CREATED_BY","VARCHAR2(64)","创建人");
-	rowValue("CREATED_DATE","DATE","创建时间");
-	rowValue("UPDATED_BY","VARCHAR2(64)","修改人");
-	rowValue("UPDATED_DATE","DATE","修改时间");
+	rowValue("CREATED_BY","VARCHAR2(64)","创建人",'');
+	rowValue("CREATED_DATE","DATE","创建时间",'sysdate');
+	rowValue("UPDATED_BY","VARCHAR2(64)","修改人",'');
+	rowValue("UPDATED_DATE","DATE","修改时间",'sysdate');
 }
 
 function addRow(){
-	rowValue("","","","","");
+	rowValue("","","","");
 }
 
 function delRow(sss){
 	$(sss).parent().parent().remove();
-}
-
-function getSelect(){
-	var select = '<select style="width:120px;" onchange="document.getElementById(\'dynInput\').value=this.value"><option value="A类">A类</option><option value="B类">B类</option><option value="C类">C类</option>  <option value="D类">D类</option></select><input id="dynInput" name="input" class="iInput">';
-	return select;
 }
 
 function save() {
