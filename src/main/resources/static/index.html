@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style type="text/css">
+/* 	body{font-size:20px} */
+/* 	input{font-size:20px;width:50px} */
+/* 	button{font-size:20px} */
+/*     input { */
+/*         border: 0;  // 去除未选中状态边框 */
+/*         outline: none; // 去除选中状态边框 */
+/*         background-color: rgba(0, 0, 0, 0);// 透明背景 */
+/*     } */
+.dataTable{
+-o-text-overflow:ellipsis;text-overflow:ellipsis;overflow:hidden;white-space:nowrap;width:100%;
+}
+</style>
+<script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript" src="main.js" ></script>
+<meta charset="UTF-8">
+<title>AutoSQL</title>
+</head>
+<body>
+	<table style="border-collapse:separate; border-spacing:0px 10px;">
+		<tbody>
+			<tr>
+				<td>起始编号：</td><td><input id="startNo" style="length: 15" />
+				<td width="100px"></td>
+				<td><button onclick="addRow()">添加一行</button></td>
+				<td width="100px"></td>
+				<td><input type="file" webkitdirectory name="选择保存位置">选择保存位置</button></td>
+			</tr>                 
+			<tr>
+				<td>编辑人：</td><td><input id="editor" style="length: 15" /></td>
+				<td width="100px"></td>
+			</tr>
+			<tr>
+				<td>表名：</td><td><input id="tableName" style="length: 15" /></td>
+				<td width="100px"></td>
+				<td><button onclick="addTracer()">添加留痕SQL</button></td>
+			</tr>
+			<tr>
+				<td>表注释：</td><td><input id="tableComment" style="length: 15" /></td>
+				<td width="100px"></td>
+				<td><button onclick="save()">生成SQL</button></td>
+			</tr>
+		</tbody>
+	</table>
+<div>
+<table id="dataTable" class="dataTable" style="border-collapse:separate; border-spacing:0px 0px; "border="1">
+	<thead align="center"><tr style="background-color:#70AD47">
+	<td width="50px">序号</td>
+	<td style="font-size:15px;width:150px" >列名</td>
+	<td width="150px">字段类型</td>
+	<td width="250px">字段注释</td>
+	<td width="50px">默认值</td>
+	<td width="50px">可空</td>
+	<td width="100px">操作</td>
+	</tr></thead>
+	<tbody align="center">
+		<tr height="40px" >
+		<td >1</td>
+		<td><input value="ID" style="font-size:15px;width:150px" /></td>
+		<td><input value="VARCHAR2(64)" width="50px" /></td>
+		<td><input value="UUID"  width="250px"/></td>
+		<td><input value="" width="50px"/></td>
+		<td><input type="checkbox" /></td>
+		<td><button onclick="delRow(this)" >删除</button></td>
+		</tr>
+	</tbody>
+</table>
+
+</div>
+</body>
+</html>
