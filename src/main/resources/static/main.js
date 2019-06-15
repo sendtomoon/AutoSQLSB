@@ -13,7 +13,7 @@ function flushRows(){
 }
 function rowValue(filed,type,comment,defval){
 	var len = $('#dataTable tbody tr').length;
-	var html = '<tr height="40px" ><td align="center" >'+(len+1)+
+	var html = '<tr height="30px" ><td align="center" >'+(len+1)+
 	'</td><td><input height="40px" value="'+filed+'" /></td><td><input height="40px" value="'+type+'" />'+
 	'</td><td width="250px"><input height="40px" value="'+comment+'" width="250px"/></td>'+
 	'<td><input height="40px" value="'+defval+'" width="50px"/>'+

@@ -3,7 +3,7 @@
 <head>
 <style type="text/css">
 /* 	body{font-size:20px} */
- 	input{font-size:20px} 
+ 	input{font-size:15px} 
 /* 	button{font-size:20px} */
 /*     input { */
 /*         border: 0;  // 去除未选中状态边框 */
@@ -49,22 +49,22 @@
 <table id="dataTable" class="dataTable" style="border-collapse:separate; border-spacing:0px 0px; "border="1">
 	<thead align="center"><tr style="background-color:#70AD47">
 	<td width="50px">序号</td>
-	<td style="font-size:15px;width:150px" >列名</td>
-	<td width="150px">字段类型</td>
+	<td style="width:120px" >列名</td>
+	<td width="150px" style="width:100px">字段类型</td>
 	<td width="250px">字段注释</td>
-	<td width="50px">默认值</td>
+	<td width="120px">默认值</td>
 	<td width="50px">可空</td>
 	<td width="100px">操作</td>
 	</tr></thead>
-	<tbody align="center">
-		<tr height="40px" >
-		<td >1</td>
-		<td><input value="ID" style="font-size:15px;width:150px" /></td>
-		<td><input value="VARCHAR2(64)" " /></td>
-		<td><input value="UUID" "/></td>
-		<td><input value="" "/></td>
+	<tbody>
+		<tr height="30px" >
+		<td align="center">1</td>
+		<td><input value="ID" style="width:100px"/></td>
+		<td><input value="VARCHAR2(64)"  style="width:120px" /></td>
+		<td><input value="UUID" /></td>
+		<td width="120px"><input value="" width="120px"/></td>
 		<td><input type="checkbox" /></td>
-		<td><button onclick="delRow(this)" >删除</button></td>
+		<td align="center"><button onclick="delRow(this)" >删除</button></td>
 		</tr>
 	</tbody>
 </table>
