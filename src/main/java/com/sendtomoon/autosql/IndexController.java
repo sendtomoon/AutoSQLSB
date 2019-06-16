@@ -4,24 +4,16 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-import java.time.LocalTime;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSON;
 
 @Controller
 public class IndexController {
-
-	@RequestMapping("/test111")
-	@ResponseBody
-	public String test(@RequestParam("test1") String test1) {
-		return test1 + LocalTime.now();
-	}
 
 	@RequestMapping("/save")
 	@ResponseBody
