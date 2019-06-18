@@ -14,11 +14,11 @@ function flushRows(){
 function rowValue(filed,type,comment,defval){
 	var len = $('#dataTable tbody tr').length;
 	var html = '<tr height="30px" ><td align="center" >'+(len+1)+
-	'</td><td><input height="40px" value="'+filed+'" /></td><td><input height="40px" value="'+type+'" />'+
+	'</td><td><input style="width:100px" value="'+filed+'" /></td><td><input style="width:120px" value="'+type+'" />'+
 	'</td><td width="250px"><input height="40px" value="'+comment+'" width="250px"/></td>'+
-	'<td><input height="40px" value="'+defval+'" width="50px"/>'+
-	'<td><input type="checkbox"  checked="checked"/></td>'+
-	'<td><button onclick="delRow(this)" >删除</button></td></tr>';
+	'<td><input width="50px" value="'+defval+'"/>'+
+	'<td align="center"><input type="checkbox"  checked="checked"/></td>'+
+	'<td align="center"><button onclick="delRow(this)" >删除</button></td></tr>';
 	$("#dataTable").append(html);
 	flushRows();
 }
