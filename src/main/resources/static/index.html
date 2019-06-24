@@ -2,33 +2,18 @@
 <html>
 <head>
 <style type="text/css">
-/* 	body{font-size:20px} */
- 	input{font-size:15px} 
-/* 	button{font-size:20px} */
-/*     input { */
-/*         border: 0;  // 去除未选中状态边框 */
-/*         outline: none; // 去除选中状态边框 */
-/*         background-color: rgba(0, 0, 0, 0);// 透明背景 */
-/*     } */
+input{font-size:14px} 
 .dataTable{
--o-text-overflow:ellipsis;text-overflow:ellipsis;overflow:hidden;white-space:nowrap;width:100%;
+-o-text-overflow:ellipsis;text-overflow:ellipsis;overflow:hidden;white-space:nowrap;
 }
 </style>
-<script type="text/javascript" src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript" src="jquery.min.js"></script>
 <script type="text/javascript" src="main.js" ></script>
-<!-- 		<link rel="stylesheet" href="ace/assets/css/bootstrap.min.css"/> -->
-<!-- 		<link rel="stylesheet" href="ace/assets/css/font-awesome.min.css" /> -->
-<!-- 		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300" /> -->
-<!-- 		<link rel="stylesheet" href="ace/assets/css/ace.min.css" /> -->
-<!-- 		<link rel="stylesheet" href="ace/assets/css/ace-rtl.min.css" /> -->
-<!-- 		<link rel="stylesheet" href="ace/assets/css/ace-skins.min.css" /> -->
-<!-- 		<script src="ace/assets/js/ace-extra.min.js"></script> -->
-
 <meta charset="UTF-8">
 <title>AutoSQL</title>
 </head>
 <body>
-<div>
+<div align="center">
 	<table  style="border-collapse:separate; border-spacing:0px 10px;">
 		<tbody>
 			<tr>
@@ -54,27 +39,21 @@
 		</tbody>
 	</table>
 </div>
-<div align="center"  width="600px">
-<table id="dataTable" class="dataTable" style="border-collapse:separate; border-spacing:0px 0px; "border="1"  width="600px">
-	<thead align="center"><tr style="background-color:#70AD47">
-	<td width="50px">序号</td>
-	<td style="width:120px" >列名</td>
-	<td width="150px" style="width:100px">字段类型</td>
-	<td width="250px">字段注释</td>
+<div align="center">
+<table id="dataTable" class="dataTable" style="border-collapse:separate; border-spacing:0px 0px; "border="1">
+	<thead align="center">
+	<tr style="background-color:#bcdaee">
+	<td colspan="3">表名<input style="width: 70%; height: 100%;background-color:#bcdaee" /></td><td colspan="3">表注释<input style="width: 70%; height: 100%" /></td></tr>
+	<tr style="background-color:#70AD47">
+	<td width="30px">序号</td>
+	<td width="150px" >列名</td>
+	<td width="100px">字段类型</td>
+	<td width="200px">字段注释</td>
 	<td width="50px">默认值</td>
 	<td width="50px">可空</td>
 	<td width="100px">操作</td>
 	</tr></thead>
 	<tbody>
-		<tr height="30px" >
-		<td align="center">1</td>
-		<td><input value="ID" style="width:100px"/></td>
-		<td><input value="VARCHAR2(64)"  style="width:120px" /></td>
-		<td><input value="UUID" /></td>
-		<td width="50px"><input value="" width="50px"/></td>
-		<td align="center"><input type="checkbox" /></td>
-		<td align="center"><button onclick="delRow(this)" >删除</button></td>
-		</tr>
 	</tbody>
 </table>
 

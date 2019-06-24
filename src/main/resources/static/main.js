@@ -1,4 +1,5 @@
 $(document).ready(function () {
+	rowValue("ID","VARCHAR2(64)","UUID",'',false);
 	flushRows();
 });
 function flushRows(){
@@ -11,26 +12,32 @@ function flushRows(){
 	$("#dataTable tbody  tr:odd").find("input").addClass("odd");
 	$("#dataTable tbody  tr:even").find("input").addClass("even");
 }
-function rowValue(filed,type,comment,defval){
+function rowValue(filed,type,comment,defval,checked){
 	var len = $('#dataTable tbody tr').length;
-	var html = '<tr height="30px" ><td align="center" >'+(len+1)+
-	'</td><td><input style="width:100px" value="'+filed+'" /></td><td><input style="width:120px" value="'+type+'" />'+
-	'</td><td width="250px"><input height="40px" value="'+comment+'" width="250px"/></td>'+
-	'<td><input width="50px" value="'+defval+'"/>'+
-	'<td align="center"><input type="checkbox"  checked="checked"/></td>'+
+	var checkStr = '';
+	if(checked){
+		checkStr = '<td align="center"><input type="checkbox"  checked="checked"/></td>'
+	}else{
+		checkStr = '<td align="center"><input type="checkbox" /></td>'
+	}
+	var html = '<tr height="30px" ><td align="center" >'+(len+1)+'</td>'+
+	'<td><input style="width: 100%; height: 100%" value="'+filed+'" /></td>'+
+	'<td><input style="width: 100%; height: 100%" value="'+type+'" /></td>'+
+	'<td><input style="width: 100%; height: 100%" value="'+comment+'"/></td>'+
+	'<td><input style="width: 100%; height: 100%" value="'+defval+'"/>'+ checkStr +
 	'<td align="center"><button onclick="delRow(this)" >删除</button></td></tr>';
 	$("#dataTable").append(html);
 	flushRows();
 }
 function addTracer(){
-	rowValue("CREATED_BY","VARCHAR2(64)","创建人",'');
-	rowValue("CREATED_DATE","DATE","创建时间",'sysdate');
-	rowValue("UPDATED_BY","VARCHAR2(64)","修改人",'');
-	rowValue("UPDATED_DATE","DATE","修改时间",'sysdate');
+	rowValue("CREATED_BY","VARCHAR2(64)","创建人",'',true);
+	rowValue("CREATED_DATE","DATE","创建时间",'sysdate',true);
+	rowValue("UPDATED_BY","VARCHAR2(64)","修改人",'',true);
+	rowValue("UPDATED_DATE","DATE","修改时间",'sysdate',true);
 }
 
 function addRow(){
-	rowValue("","","","");
+	rowValue("","","","",true);
 }
 
 function delRow(sss){
