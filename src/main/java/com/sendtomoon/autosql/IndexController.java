@@ -62,7 +62,7 @@ public class IndexController {
 		File file = new File(this.getNumber(startNo, 0) + "_ommdata_ddl_create_" + tableName + "_" + editor + ".sql");
 		FileOutputStream out = new FileOutputStream(file, false);
 		StringBuffer createSB = new StringBuffer();
-		createSB.append("-- Create table");
+		createSB.append("-- Create table \r\n");
 		createSB.append("create table " + tableName + " \r\n");
 		createSB.append("( \r\n");
 		for (int i = 0; i < list.size(); i++) {
@@ -71,9 +71,9 @@ public class IndexController {
 					+ this.isNull(dto.isAllowNull()) + (i == list.size() ? "" : ",") + "\r\n");
 		}
 		createSB.append("); \r\n");
-		createSB.append("-- Add comments to the table ");
+		createSB.append("-- Add comments to the table  \r\n");
 		createSB.append("comment on table " + tableName + " is '" + tableComment + "'; \r\n");
-		createSB.append("-- Add comments to the columns ");
+		createSB.append("-- Add comments to the columns  \r\n");
 		for (RowDataDTO dto : list) {
 			createSB.append(
 					"comment on column " + tableName + "." + dto.getFiled() + " is '" + dto.getComment() + "'; \r\n");

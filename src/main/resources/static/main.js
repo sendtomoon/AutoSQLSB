@@ -11,6 +11,12 @@ function flushRows(){
 	$("#dataTable tbody  tr:even").find("input").css({"background-color":"#E2EFDA","outline":"none","border": "0"});   
 	$("#dataTable tbody  tr:odd").find("input").addClass("odd");
 	$("#dataTable tbody  tr:even").find("input").addClass("even");
+	var trs = $("#dataTable tbody").children("tr");
+	var len = $("#dataTable tbody tr").length;
+	for (var i = 1; i <= len; i++) {
+		var tds = trs.eq(i-1).find("td");
+		tds.eq(0).text(i);
+	}
 }
 function rowValue(filed,type,comment,defval,checked){
 	var len = $('#dataTable tbody tr').length;
@@ -20,12 +26,14 @@ function rowValue(filed,type,comment,defval,checked){
 	}else{
 		checkStr = '<td align="center"><input type="checkbox" /></td>'
 	}
-	var html = '<tr height="30px" ><td align="center" >'+(len+1)+'</td>'+
+	var html = '<tr height="30px" >'+
+	'<td align="center">'+(len+1)+'</td>'+
 	'<td><input style="width: 100%; height: 100%" value="'+filed+'" /></td>'+
 	'<td><input style="width: 100%; height: 100%" value="'+type+'" /></td>'+
 	'<td><input style="width: 100%; height: 100%" value="'+comment+'"/></td>'+
 	'<td><input style="width: 100%; height: 100%" value="'+defval+'"/>'+ checkStr +
-	'<td align="center"><button onclick="delRow(this)" >删除</button></td></tr>';
+	'<td align="center"><button onclick="delRow(this)" >删除</button>'+
+	'<button onclick="insertRow(this)" >插入</button></td></tr>';
 	$("#dataTable").append(html);
 	flushRows();
 }
@@ -42,6 +50,22 @@ function addRow(){
 
 function delRow(sss){
 	$(sss).parent().parent().remove();
+}
+
+function insertRow(sss){
+	var html = '<tr height="30px" >'+
+	'<td align="center" ></td>'+
+	'<td><input style="width: 100%; height: 100%" /></td>'+
+	'<td><input style="width: 100%; height: 100%" /></td>'+
+	'<td><input style="width: 100%; height: 100%" /></td>'+
+	'<td><input style="width: 100%; height: 100%" />'+ 
+	'<td align="center"><input type="checkbox" checked="checked"/></td>' +
+	'<td align="center"><button onclick="delRow(this)" >删除</button>'+
+	'<button onclick="insertRow(this)" >插入</button></td></tr>';
+	var tdc = $(sss).parent();
+	var tr = tdc.parent();
+	tr.before(html);
+	flushRows();
 }
 
 function save() {
@@ -78,4 +102,13 @@ function save() {
 			"tableComment":$("#tableComment").val()
 			}
 	});
+}
+
+function flushRowID(){
+	var trs = $("#dataTable tbody").children("tr");
+	var len = $("#dataTable tbody tr").length;
+	for (var i = 1; i <= len; i++) {
+		var tds = trs.eq(i).find("td");
+		tds.eq(0).text(i);
+	}
 }

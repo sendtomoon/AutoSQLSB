@@ -6,6 +6,12 @@ input{font-size:14px}
 .dataTable{
 -o-text-overflow:ellipsis;text-overflow:ellipsis;overflow:hidden;white-space:nowrap;
 }
+.tableHead{
+background-color:#bcdaee;height:40PX
+}
+.tablePut{
+background-color: #bcdaee;width: 70%; height: 100%;outline:none; border: 0; font-size:16px;
+}
 </style>
 <script type="text/javascript" src="jquery.min.js"></script>
 <script type="text/javascript" src="main.js" ></script>
@@ -27,12 +33,12 @@ input{font-size:14px}
 				<td width="100px"></td>
 			</tr>
 			<tr>
-				<td>表名：</td><td><input id="tableName" style="length: 15" /></td>
+				<td></td>
 				<td width="100px"></td>
 				<td><button onclick="addTracer()">添加留痕SQL</button></td>
 			</tr>
 			<tr>
-				<td>表注释：</td><td><input id="tableComment" style="length: 15" /></td>
+				<td></td>
 				<td width="100px"></td>
 				<td><button onclick="save()">生成SQL</button></td>
 			</tr>
@@ -41,11 +47,12 @@ input{font-size:14px}
 </div>
 <div align="center">
 <table id="dataTable" class="dataTable" style="border-collapse:separate; border-spacing:0px 0px; "border="1">
-	<thead align="center">
-	<tr style="background-color:#bcdaee">
-	<td colspan="3">表名<input style="width: 70%; height: 100%;background-color:#bcdaee" /></td><td colspan="3">表注释<input style="width: 70%; height: 100%" /></td></tr>
-	<tr style="background-color:#70AD47">
-	<td width="30px">序号</td>
+	<thead>
+	<tr class="tableHead">
+	<td colspan="3">表名：  <input id="tableName" class="tablePut" /></td>
+	<td colspan="3">表注释：  <input id="tableComment" class="tablePut" /></td><td></td></tr>
+	<tr style="background-color:#70AD47"  align="center">
+	<td width="30px" align="center">序号</td>
 	<td width="150px" >列名</td>
 	<td width="100px">字段类型</td>
 	<td width="200px">字段注释</td>
