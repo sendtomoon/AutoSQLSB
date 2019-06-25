@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -31,7 +32,7 @@ public class IndexController {
 		sb.append("create table " + tableName + " \r\n");
 		sb.append("( \r\n");
 		for (RowDataDTO dto : list) {
-			sb.append("  " + dto.getFiled() + "     " + dto.getType() + " default " + dto.getDefVal() + ""
+			sb.append("  " + dto.getFiled() + "     " + dto.getType() + this.isDef(dto.getDefVal())
 					+ this.isNull(dto.isAllowNull()) + ", \r\n");
 		}
 		sb.append("); \r\n");
@@ -75,6 +76,13 @@ public class IndexController {
 
 	private String isNull(boolean isnull) {
 		return isnull ? " " : " not null ";
+	}
+
+	private String isDef(String def) {
+		if (StringUtils.isNotBlank(def)) {
+			return " default " + def;
+		}
+		return "";
 	}
 
 }
