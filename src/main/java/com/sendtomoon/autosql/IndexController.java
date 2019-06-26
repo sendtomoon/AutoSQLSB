@@ -1,6 +1,7 @@
 package com.sendtomoon.autosql;
 
 import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -11,7 +12,14 @@ import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
+import javax.servlet.http.HttpServletResponse;
+
+import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -23,13 +31,24 @@ public class IndexController {
 
 	@RequestMapping("/save")
 	@ResponseBody
-	public String save(String datas, String startNo, String editor, String tableName, String tableComment)
-			throws Exception {
+	public ResponseEntity<byte[]> save(String datas, String startNo, String editor, String tableName,
+			String tableComment, HttpServletResponse response) throws Exception {
 		String create = this.create(datas, startNo, editor, tableName, tableComment);
 		String syn = this.syn(startNo, editor, tableName);
 		String grt = this.grt(startNo, editor, tableName);
 		this.zip(create, syn, grt);
-		return "successful";
+
+		File file = new File("SQL.zip");
+		HttpHeaders headers = new HttpHeaders();
+		// 解决中文乱码
+		String downloadfile = new String("SQL.zip".getBytes("UTF-8"), "iso-8859-1");
+		// 以下载方式打开文件
+		headers.setContentDispositionFormData("attachment", downloadfile);
+		// 二进制流
+		headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
+
+		return new ResponseEntity<byte[]>(FileUtils.readFileToByteArray(file), headers, HttpStatus.CREATED);
+
 	}
 
 	private String getNumber(String startNo, int addValue) {
