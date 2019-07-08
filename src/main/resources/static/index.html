@@ -24,23 +24,15 @@ background-color: #bcdaee;width: 70%; height: 100%;outline:none; border: 0; font
 		<tbody>
 			<tr>
 				<td>起始编号：</td><td><input id="startNo" style="length: 15" />
-				<td width="100px"></td>
-				<td><button onclick="addRow()">添加一行</button></td>
-				<td width="100px"></td>
+				<td><button onclick="addTracer()">添加留痕SQL</button></td>
 			</tr>                 
 			<tr>
-				<td>编辑人：</td><td><input id="editor" style="length: 15" /></td>
-				<td width="100px"></td>
+				<td>编辑人：</td><td><input id="editor" value="liubingtao749" style="length: 15" /></td>
+				<td><button onclick="save()">生成表SQL</button></td>
 			</tr>
 			<tr>
-				<td></td>
-				<td width="100px"></td>
-				<td><button onclick="addTracer()">添加留痕SQL</button></td>
-			</tr>
-			<tr>
-				<td></td>
-				<td width="100px"></td>
-				<td><button onclick="save()">生成SQL</button></td>
+				<td>序列名：</td><td><input id="seqName" style="length: 15" />
+				<td><button onclick="saveSeq()">生成序列SQL</button></td>
 			</tr>
 		</tbody>
 	</table>

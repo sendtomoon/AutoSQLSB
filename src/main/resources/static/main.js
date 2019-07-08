@@ -100,6 +100,26 @@ function save() {
 			"editor":$("#editor").val(),
 			"tableName":$("#tableName").val(),
 			"tableComment":$("#tableComment").val()
+			},
+			success:function (){
+				
+			}
+	});
+}
+
+function saveSeq() {
+	$.ajax({
+		url : "http://127.0.0.1:11100/saveSeq",
+		async : true,
+		dataType : "json",
+		type: "post",
+		data : {
+			"startNo":$("#startNo").val(),
+			"editor":$("#editor").val(),
+			"tableName":$("#seqName").val(),
+			},
+			success:function (){
+				
 			}
 	});
 }
