@@ -51,7 +51,7 @@ public class TableService {
 		for (int i = 0; i < list.size(); i++) {
 			RowDataDTO dto = list.get(i);
 			createSB.append(" " + dto.getFiled() + " " + dto.getType() + this.isDef(dto.getDefVal())
-					+ this.isNull(dto.isAllowNull()) + (i == list.size() ? "" : ",") + "\r\n");
+					+ this.isNull(dto.isAllowNull()) + ((i == (list.size() - 1)) ? "" : ",") + "\r\n");
 		}
 		createSB.append("); \r\n");
 		createSB.append("-- Add comments to the table  \r\n");
@@ -79,12 +79,12 @@ public class TableService {
 	}
 
 	private String isNull(boolean isnull) {
-		return isnull ? " " : " not null ";
+		return isnull ? "" : " not null";
 	}
 
 	private String isDef(String def) {
 		if (StringUtils.isNotBlank(def)) {
-			return " default " + def + " ";
+			return " default " + def;
 		}
 		return "";
 	}
