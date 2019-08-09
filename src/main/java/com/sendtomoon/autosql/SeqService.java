@@ -23,8 +23,8 @@ public class SeqService {
 		File file = new File(this.getNumber(startNo, 2) + "_ommdata_ddl_grt_" + tableName + "_" + editor + ".sql");
 		FileOutputStream out = new FileOutputStream(file, false);
 		StringBuffer grtSB = new StringBuffer();
-		grtSB.append("grant select, insert, update, delete on OMMDATA." + tableName + " to OMMOPR; \r\n");
-		grtSB.append("grant select on OMMDATA." + tableName + " to devsup01;");
+		grtSB.append("grant select on OMMDATA." + tableName + " to OMMOPR; \r\n");
+		grtSB.append("grant select on OMMDATA." + tableName + " to devsup01; \r\n");
 		out.write(grtSB.toString().getBytes("utf-8"));
 		out.flush();
 		out.close();
@@ -41,12 +41,11 @@ public class SeqService {
 		FileOutputStream out = new FileOutputStream(file, false);
 		StringBuffer createSB = new StringBuffer();
 		createSB.append("create sequence " + seqName + " \r\n");
-		createSB.append("minvalue \r\n");
-		createSB.append("maxvalue 9999999999999 \r\n");
-		createSB.append("start with \r\n");
-		createSB.append("start with \r\n");
-		createSB.append("increment by \r\n");
-		createSB.append("cache 20;");
+		createSB.append("minvalue 1\r\n");
+		createSB.append("maxvalue 99999999 \r\n");
+		createSB.append("start with 1\r\n");
+		createSB.append("increment by 1\r\n");
+		createSB.append("cache 20;\r\n");
 		out.write(createSB.toString().getBytes("utf-8"));
 		out.flush();
 		out.close();
